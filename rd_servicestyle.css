@@ -1,0 +1,243 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    background-image: url(picture/main_background_image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+header {
+    background-color: #f5f5f5; /* 하얀 배경 */
+    padding: 0px 0; /* 상하 여백 */
+}
+
+/* Container Flexbox */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    gap: 10px; /* 요소 사이 여백 */
+}
+
+/* Header title on the left */
+h1 {
+    font-size: 34px;
+    color: #333;
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: -300px;
+    padding: 1.5%;
+}
+
+/* Center navigation */
+.center-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.center-nav a:hover {
+    text-decoration: underline;
+}
+
+/* 드롭다운 스타일 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    max-height: 0; /* 기본적으로 숨김 */
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-width: 120px;
+    z-index: 1;
+    opacity: 0; /* 초기 상태에서 숨김 */
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* 슬라이드와 페이드 효과 */
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* 드롭다운 메뉴가 보여질 때 */
+.dropdown:hover .dropdown-content {
+    max-height: 500px; /* 충분히 큰 값으로 설정해 메뉴 전체가 보이도록 함 */
+    opacity: 1; /* 페이드 효과로 보이게 함 */
+}
+
+/* Right navigation */
+.right-nav {
+    white-space: nowrap;
+    text-align: right;
+    margin-right: -300px;
+}
+
+.right-nav a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.right-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Section */
+main {
+    background: url('background-image.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.notice-board {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.search-bar label {
+    align-self: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #e0e0e0;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.button-container-admin-only{
+    margin-top: 30px;
+    margin-left: 740px;
+}
+.go-button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #333333;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.go-button:hover {
+    background-color: #929292;
+}
+
+/* 기본적으로 .admin-only 클래스는 숨겨둡니다 */
+.admin-only {
+    display: none;
+}
+
+/* Footer */
+footer {
+    position: fixed; /* 화면 하단 고정 */
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
+
+footer nav a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: #fff;
+}
+
+/* Main Section 아래쪽 여백 추가 */
+main {
+    padding-bottom: 60px; /* 푸터가 고정되므로 콘텐츠가 겹치지 않게 추가 */
+}
