@@ -1,0 +1,198 @@
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* body에 배경 이미지 추가 */
+body {
+    background-image: url('picture/login_background_image.jpg'); /* 배경 이미지 경로 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 스크롤해도 배경 고정 */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 밝은 오버레이 추가 */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* 밝은 오버레이 설정 (50% 투명도) */
+    z-index: -1; /* 오버레이가 가장 뒤로 가도록 설정 */
+}
+
+/* Header */
+header {
+    background-color: #f5f5f5;
+    padding: 0;
+}
+
+/* Container Flexbox */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    gap: 10px;
+    flex: 1;
+}
+
+/* Header title on the left */
+h1 {
+    font-size: 34px;
+    color: #333;
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: -300px;
+    padding: 1.5%;
+}
+
+/* Center navigation */
+.center-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.center-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown style */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-width: 120px;
+    z-index: 1;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* 로그인 섹션 스타일 */
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    width: 500px;
+    margin-top: 100px;
+}
+
+.login-container h2 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.login-container input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-container button:hover {
+    background-color: #cc7a00;
+}
+
+.signup-link {
+    display: block;
+    margin-top: 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    width: 100%; /* 화면 전체 너비 */
+    position: fixed; /* 페이지 하단 고정 */
+    bottom: 0; /* 하단 위치 */
+    left: 0; /* 왼쪽 정렬 */
+}
+
+footer nav a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: #fff;
+}

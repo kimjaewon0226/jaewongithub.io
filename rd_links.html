@@ -16,14 +16,13 @@
                 <div class="dropdown">
                     <a href="index.html">R&D 통합 플랫폼 소개</a>
                     <div class="dropdown-content">
-                        <a href="link1.html">현황</a>
-                        <a href="link1.html">보유기술</a>
-                        <a href="link1.html">참여인력</a>
+                        <a href="#status">현황</a>
+                        <a href="#related-sites">관련사이트</a>
+                        <a href="#info-page">참여인력</a>
                     </div>
                 </div>
                 <span>|</span>
                 
-                <!-- 서브 메뉴가 포함된 항목 -->
                 <div class="dropdown">
                     <a href="kr_rd_status.html">국내 R&D 현황</a>
                     <div class="dropdown-content">
@@ -39,7 +38,7 @@
                     <a href="rd_service.html">서비스</a>
                     <div class="dropdown-content">
                         <a href="rd_service.html">공지사항</a>
-                        <a href="link1.html">게시판</a>
+                        <a href="rd_q_and_a.html">Q&A</a>
                     </div>
                 </div>
                 
@@ -47,7 +46,7 @@
                 <div class="dropdown">
                     <a href="rd_partnership.html">사업제휴</a>
                     <div class="dropdown-content">
-                        <a href="link1.html">게시판</a>
+                        <a href="rd_online_board.html">게시판</a>
                     </div>
                 </div>
             </nav>
@@ -80,21 +79,21 @@
                 </tr>
                 <tr class="data-row">
                     <td>1</td>
-                    <td>nCube</td>
-                    <td><a href="https://ncube.com/" target="_blank">링크</a></td>
+                    <td class="editable">nCube</td>
+                    <td class="editable editable-link"><a href="https://ncube.com/" target="_blank">https://ncube.com/</a></td>
                     <td class="admin-only"><button class="edit-button">수정</button></td>
                 </tr>
                 <tr class="data-row">
                     <td>2</td>
-                    <td>DELOITTE UNITED STATES</td>
-                    <td><a href="https://www2.deloitte.com/us/en/insights/topics/digital-transformation/cloud-enabled-research-and-development-innovation.html" target="_blank">링크</a></td>
+                    <td class="editable">DELOITTE UNITED STATES</td>
+                    <td class="editable editable-link"><a href="https://www2.deloitte.com/us/en/insights/topics/digital-transformation/cloud-enabled-research-and-development-innovation.html" target="_blank">https://www2.deloitte.com</a></td>
                     <td class="admin-only"><button class="edit-button">수정</button></td>
                 </tr>
             </table>
 
             <!-- 테이블 바로 아래 오른쪽에 배치된 버튼 -->
             <div class="button-container-admin-only">
-                <a href="https://example.com" class="go-button">관련 사이트 등록하기</a>
+                <a href="rd_links_page.html" class="go-button">관련 사이트 등록하기</a>
             </div>
         </div>
     </section>    
@@ -103,35 +102,105 @@
     <footer>
         <p>© 2024 Integrated R&D Development Platform</p>
         <nav>
-            <a href="#">홈</a> | <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
+            <a href="index.html">홈</a> | <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
         </nav>
     </footer>
 </body>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const rows = document.querySelectorAll(".data-row");
-        rows.forEach((row, index) => {
-            if (index < 10) { // 첫 10개 행 표시
-                row.style.display = "table-row";
-            }
-        });
-
-        // 관리자 여부를 확인하는 변수
-        const isAdmin = true; // 실제 환경에선 서버에서 권한에 따라 설정
-
-        // 관리자인 경우에만 수정 버튼과 관련 사이트 등록하기 버튼을 표시
-        if (isAdmin) {
-            document.querySelectorAll('.admin-only').forEach(element => {
-                element.style.display = 'table-cell'; // 관리자인 경우 수정 열과 버튼 표시
-            });
-            document.querySelector('.button-container-admin-only').style.display = 'block'; // 관리자인 경우 버튼 표시
-        } else {
-            document.querySelectorAll('.admin-only').forEach(element => {
-                element.style.display = 'none'; // 관리자가 아닐 경우 수정 열 숨기기
-            });
-            document.querySelector('.button-container-admin-only').style.display = 'none'; // 관리자가 아닐 경우 버튼 숨기기
+   document.addEventListener("DOMContentLoaded", function() {
+    const rows = document.querySelectorAll(".data-row");
+    rows.forEach((row, index) => {
+        if (index < 10) { // 첫 10개 행 표시
+            row.style.display = "table-row";
         }
     });
+
+    const isAdmin = true;
+
+    if (isAdmin) {
+        document.querySelectorAll('.admin-only').forEach(element => {
+            element.style.display = 'table-cell';
+        });
+        document.querySelector('.button-container-admin-only').style.display = 'block';
+    } else {
+        document.querySelectorAll('.admin-only').forEach(element => {
+            element.style.display = 'none';
+        });
+        document.querySelector('.button-container-admin-only').style.display = 'none';
+    }
+
+    // "수정" 버튼 클릭 이벤트
+    document.querySelectorAll('.edit-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const row = button.closest('tr');
+            const editableCells = row.querySelectorAll('.editable');
+            const linkCell = row.querySelector('.editable-link'); // 바로가기 셀
+
+            if (button.textContent === '수정') {
+                // "수정" 클릭 시 각 셀을 input 필드로 전환
+                editableCells.forEach(cell => {
+                    const currentText = cell.querySelector('a') ? cell.querySelector('a').textContent : cell.innerText;
+                    cell.innerHTML = `<input type="text" value="${currentText}">`;
+                });
+
+                // 버튼을 "저장"으로 변경
+                button.textContent = '저장';
+            } else if (button.textContent === '저장') {
+                // "저장" 클릭 시 입력된 값을 텍스트 또는 링크로 저장
+                editableCells.forEach(cell => {
+                    const input = cell.querySelector('input');
+                    if (input) {
+                        const newValue = input.value.trim();
+                        if (cell.classList.contains('editable-link')) {
+                            // 링크가 포함된 셀 처리
+                            let linkValue = newValue;
+                            if (!linkValue.startsWith("http://") && !linkValue.startsWith("https://")) {
+                                linkValue = "http://" + linkValue;
+                            }
+                            cell.innerHTML = `<a href="${linkValue}" target="_blank">${linkValue}</a>`;
+                        } else {
+                            // 일반 텍스트 셀 처리
+                            cell.innerText = newValue || cell.dataset.originalText;
+                        }
+                    }
+                });
+
+                // 버튼을 다시 "수정"으로 변경
+                button.textContent = '수정';
+            }
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const rows = document.querySelectorAll(".data-row");
+    const searchButton = document.querySelector("#search + button");
+    const searchInput = document.querySelector("#search");
+    const categorySelect = document.querySelector("#category");
+
+    searchButton.addEventListener("click", function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const category = categorySelect.value;
+
+        rows.forEach(row => {
+            const orgName = row.querySelector("td:nth-child(2)").innerText.toLowerCase();
+            const link = row.querySelector("td:nth-child(3) a").innerText.toLowerCase();
+
+            // 통합검색일 때는 기관명과 링크 모두 검색, 기관명일 때는 기관명만 검색
+            const isMatch = (category === "통합검색" && (orgName.includes(searchTerm) || link.includes(searchTerm))) ||
+                            (category === "기관명" && orgName.includes(searchTerm));
+
+            row.style.display = isMatch ? "table-row" : "none";
+        });
+    });
+
+    // Enter 키를 눌렀을 때도 검색이 작동하도록 설정
+    searchInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            searchButton.click();
+        }
+    });
+});
 </script>
 </html>

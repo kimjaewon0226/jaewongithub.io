@@ -5,18 +5,26 @@
     box-sizing: border-box;
 }
 
+/* Set full height for footer positioning */
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f9f9f9;
-    background-image: url(picture/main_background_image.jpg);
+    background-image: url(picture/writing_background_image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header */
 header {
-    background-color: #f5f5f5; /* 하얀 배경 */
-    padding: 0px 0; /* 상하 여백 */
+    background-color: #f5f5f5;
+    padding: 0;
 }
 
 /* Container Flexbox */
@@ -28,7 +36,8 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #f5f5f5;
-    gap: 10px; /* 요소 사이 여백 */
+    gap: 10px;
+    flex: 1;
 }
 
 /* Header title on the left */
@@ -60,14 +69,14 @@ h1 {
     text-decoration: underline;
 }
 
-/* 드롭다운 스타일 */
+/* Dropdown style */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropdown-content {
-    max-height: 0; /* 기본적으로 숨김 */
+    max-height: 0;
     overflow: hidden;
     position: absolute;
     top: 100%;
@@ -77,8 +86,8 @@ h1 {
     border-radius: 10px;
     min-width: 120px;
     z-index: 1;
-    opacity: 0; /* 초기 상태에서 숨김 */
-    transition: max-height 0.5s ease, opacity 0.5s ease; /* 슬라이드와 페이드 효과 */
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .dropdown-content a {
@@ -92,10 +101,9 @@ h1 {
     background-color: #ddd;
 }
 
-/* 드롭다운 메뉴가 보여질 때 */
 .dropdown:hover .dropdown-content {
-    max-height: 500px; /* 충분히 큰 값으로 설정해 메뉴 전체가 보이도록 함 */
-    opacity: 1; /* 페이드 효과로 보이게 함 */
+    max-height: 500px;
+    opacity: 1;
 }
 
 /* Right navigation */
@@ -116,103 +124,75 @@ h1 {
     text-decoration: underline;
 }
 
-/* Main Section */
-main {
-    background: url('background-image.jpg') no-repeat center center;
-    background-size: cover;
-    padding: 40px 15px;
-    text-align: center;
+.auth-links {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
-main h2 {
-    font-size: 2rem;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.notice-board {
-    width: 80%;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 2px solid #000;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.search-bar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.search-bar label {
-    align-self: center;
-}
-
-.search-bar input[type="text"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-bar select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-bar button {
-    padding: 5px 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-thead {
-    background-color: #e0e0e0;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-table tbody tr:hover {
-    background-color: #f9f9f9;
-}
-
-.button-container-admin-only{
-    margin-top: 30px;
-    margin-left: 1340px;
-}
-.go-button {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #000000;
-    border: 2px solid #333333;
-    border-radius: 5px;
-    cursor: pointer;
+.auth-links a {
+    color: #333;
     text-decoration: none;
+    margin: 0 5px;
 }
 
-.go-button:hover {
-    background-color: #929292;
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
 }
 
-/* 기본적으로 .admin-only 클래스는 숨겨둡니다 */
-.admin-only {
-    display: none;
+h2 {
+    font-size: 40px;
+    color: #000000;
+    margin-top: 100px;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 600px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: #333;
 }
 
 /* Footer */
@@ -235,9 +215,4 @@ footer nav a {
 
 footer nav a:hover {
     color: #fff;
-}
-
-/* Main Section 아래쪽 여백 추가 */
-main {
-    padding-bottom: 60px; /* 푸터가 고정되므로 콘텐츠가 겹치지 않게 추가 */
 }

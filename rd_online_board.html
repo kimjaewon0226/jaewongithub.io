@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 확인 게시판</title>
+    <link rel="stylesheet" href="rd_online_board_style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Integrated R&D Development Platform</h1>
+            <nav class="center-nav">
+                <div class="dropdown">
+                    <a href="index.html">R&D 통합 플랫폼 소개</a>
+                    <div class="dropdown-content">
+                        <a href="#status">현황</a>
+                        <a href="#related-sites">관련사이트</a>
+                        <a href="#info-page">참여인력</a>
+                    </div>
+                </div>
+                <span>|</span>
+                
+                <!-- 서브 메뉴가 포함된 항목 -->
+                <div class="dropdown">
+                    <a href="kr_rd_status.html">국내 R&D 현황</a>
+                    <div class="dropdown-content">
+                        <a href="kr_rd_status.html">현황</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <a href="rd_links.html">관련사이트</a>
+                <span>|</span>
+
+                <div class="dropdown">
+                    <a href="rd_service.html">서비스</a>
+                    <div class="dropdown-content">
+                        <a href="rd_service.html">공지사항</a>
+                        <a href="rd_q_and_a.html">Q&A</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <div class="dropdown">
+                    <a href="rd_partnership.html">사업제휴</a>
+                    <div class="dropdown-content">
+                        <a href="rd_online_board.html">게시판</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="right-nav">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Online Board Section -->
+    <section class="online-board">
+        <h3>온라인 확인 게시판</h3>
+        <div class="search-bar">
+            <label for="search">문의자명</label>
+            <input type="text" id="search" placeholder="문의자명을 입력하세요">
+            <button type="button">검색</button>
+        </div>
+        <div class="table">
+            <div class="table-row header">
+                <div class="table-cell">문의자명</div>
+                <div class="table-cell">제목</div>
+                <div class="table-cell">처리상태</div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">정재현</div>
+                <div class="table-cell">○○○○ 문의드립니다</div>
+                <div class="table-cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">이인형</div>
+                <div class="table-cell">첨부파일을 참조하세요</div>
+                <div class="table-cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">이동혁</div>
+                <div class="table-cell">첨부파일을 참조하세요</div>
+                <div class="table-cell"></div>
+            </div>
+            <div class="table-row">
+                <div class="table-cell">김민정</div>
+                <div class="table-cell">안녕하세요. (주)○○ 김민정 사원입니다...</div>
+                <div class="table-cell"></div>
+            </div>
+        </div>
+        <div class="pagination">
+            <span class="page">&laquo;</span>
+            <span class="page active">1</span>
+            <span class="page">2</span>
+            <span class="page">3</span>
+            <span class="page">4</span>
+            <span class="page">5</span>
+            <span class="page">&raquo;</span>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 Integrated R&D Development Platform</p>
+        <nav>
+            <a href="index.html">홈</a> | <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
+        </nav>
+    </footer>
+</body>
+</html>

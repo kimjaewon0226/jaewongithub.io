@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 글쓰기</title>
+    <link rel="stylesheet" href="rd_notice_write_style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Integrated R&D Development Platform</h1>
+            <nav class="center-nav">
+                <div class="dropdown">
+                    <a href="index.html">R&D 통합 플랫폼 소개</a>
+                    <div class="dropdown-content">
+                        <a href="#status">현황</a>
+                        <a href="#related-sites">관련사이트</a>
+                        <a href="#info-page">참여인력</a>
+                    </div>
+                </div>
+                <span>|</span>
+                
+                <!-- 서브 메뉴가 포함된 항목 -->
+                <div class="dropdown">
+                    <a href="kr_rd_status.html">국내 R&D 현황</a>
+                    <div class="dropdown-content">
+                        <a href="kr_rd_status.html">현황</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <a href="rd_links.html">관련사이트</a>
+                <span>|</span>
+
+                <div class="dropdown">
+                    <a href="rd_service.html">서비스</a>
+                    <div class="dropdown-content">
+                        <a href="rd_service.html">공지사항</a>
+                        <a href="rd_q_and_a.html">Q&A</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <div class="dropdown">
+                    <a href="rd_partnership.html">사업제휴</a>
+                    <div class="dropdown-content">
+                        <a href="rd_online_board.html">게시판</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="right-nav">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="form-section">
+        <h2>공지사항 글쓰기</h2>
+        <div class="form-container">
+            <form>
+                <label for="title">제목</label>
+                <input type="text" id="title" placeholder="제목을 입력하세요">
+
+                <label for="content">내용</label>
+                <textarea id="content" placeholder="내용을 입력하세요"></textarea>
+
+                <label for="file-upload">이미지 파일 첨부</label>
+                <input type="file" id="file-upload">
+                
+                <div class="button-group">
+                    <button type="submit" class="submit-button">등록하기</button>
+                    <button type="button" class="cancel-button" onclick="window.location.href='rd_service.html'">목록보기</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+   <!-- Footer Section -->
+   <footer>
+    <p>© 2024 Integrated R&D Development Platform</p>
+    <nav>
+        <a href="index.html">홈</a> | <a href="#">이용약관</a> | <a href="#">개인정보 처리방침</a>
+    </nav>
+</footer>
+</body>
+</html>

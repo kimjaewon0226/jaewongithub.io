@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문과 답변</title>
+    <link rel="stylesheet" href="rd_q_and_astyle.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Integrated R&D Development Platform</h1>
+            <nav class="center-nav">
+                <div class="dropdown">
+                    <a href="index.html">R&D 통합 플랫폼 소개</a>
+                    <div class="dropdown-content">
+                        <a href="#status">현황</a>
+                        <a href="#related-sites">관련사이트</a>
+                        <a href="#info-page">참여인력</a>
+                    </div>
+                </div>
+                <span>|</span>
+                
+                <div class="dropdown">
+                    <a href="kr_rd_status.html">국내 R&D 현황</a>
+                    <div class="dropdown-content">
+                        <a href="kr_rd_status.html">현황</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <a href="rd_links.html">관련사이트</a>
+                <span>|</span>
+
+                <div class="dropdown">
+                    <a href="rd_service.html">서비스</a>
+                    <div class="dropdown-content">
+                        <a href="rd_service.html">공지사항</a>
+                        <a href="rd_q_and_a.html">Q&A</a>
+                    </div>
+                </div>
+                
+                <span>|</span>
+                <div class="dropdown">
+                    <a href="rd_partnership.html">사업제휴</a>
+                    <div class="dropdown-content">
+                        <a href="rd_online_board.html">게시판</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="right-nav">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="qa-section">
+        <h2>Q&A</h2>
+        <div class="qa-table-container">
+            <div class="qa-filters">
+                <select>
+                    <option>진행상태 선택</option>
+                    <option>답변완료</option>
+                    <option>질문중</option>
+                </select>
+                <select>
+                    <option>통합검색</option>
+                    <option>제목</option>
+                    <option>작성자</option>
+                    <option>등록일</option>
+                </select>
+                <input type="text" class="search-input" placeholder="검색어 입력">
+                <button>검색하기</button>
+            </div>
+            <table class="qa-table">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>등록일</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>○○○○○○○○○○○○○○○○이 궁금해요</td>
+                        <td>○○○</td>
+                        <td>2024-10-19</td>
+                        <td>답변완료</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>○○○○○○○○○○○○○○○○이 궁금해요</td>
+                        <td>○○○</td>
+                        <td>2024-10-19</td>
+                        <td>질문중</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination-and-write">
+                <div class="pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                </div>
+                <button class="write-btn">글쓰기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <img src="logo.png" alt="Platform Logo" class="footer-logo">
+            <p>Integrated R&D Development Platform</p>
+        </div>
+    </footer>
+</body>
+</html>

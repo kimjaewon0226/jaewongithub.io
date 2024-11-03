@@ -1,0 +1,237 @@
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 기본 폰트 및 배경 설정 */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('picture/main_background_image.jpg'); /* 배경 이미지 경로 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: #f5f5f5;
+    padding: 0px 0;
+}
+
+/* Container Flexbox */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    gap: 10px;
+}
+
+/* Header title */
+h1 {
+    font-size: 34px;
+    color: #333;
+    flex-shrink: 0;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: -300px;
+    padding: 1.5%;
+}
+
+/* Center navigation */
+.center-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.center-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Dropdown style */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-width: 120px;
+    z-index: 1;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* Right navigation */
+.right-nav {
+    white-space: nowrap;
+    text-align: right;
+    margin-right: -300px;
+}
+
+.right-nav a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+}
+
+.right-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Q&A Section */
+.qa-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+.qa-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.qa-table-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #000;
+}
+
+.qa-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.qa-filters select, .qa-filters button, .search-input {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.search-input {
+    width: 200px;
+}
+
+.qa-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #000;
+}
+
+.qa-table th, .qa-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.qa-table th {
+    background-color: #f0f0f0;
+}
+
+/* Pagination and Write Button */
+.pagination-and-write {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.pagination {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.write-btn {
+    padding: 10px 20px;
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.write-btn:hover {
+    background-color: #e5c700;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
+
+footer nav a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer nav a:hover {
+    color: #fff;
+}
