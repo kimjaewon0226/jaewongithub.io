@@ -50,8 +50,8 @@
                 </div>
             </nav>
             <div class="right-nav">
-                <a href="login.html">로그인</a>
-                <a href="signup.html">회원가입</a>
+                <a href="rd_login.html">로그인</a>
+                <a href="rd_signup.html">회원가입</a>
             </div>
         </div>
     </header>
@@ -61,19 +61,20 @@
         <h2>Q&A</h2>
         <div class="qa-table-container">
             <div class="qa-filters">
-                <select>
-                    <option>진행상태 선택</option>
-                    <option>답변완료</option>
-                    <option>질문중</option>
+                <!-- 진행상태와 통합검색 필터링 옵션 -->
+                <select id="status-filter" onchange="filterTable()">
+                    <option value="all">진행상태 선택</option>
+                    <option value="답변완료">답변완료</option>
+                    <option value="질문중">질문중</option>
                 </select>
-                <select>
-                    <option>통합검색</option>
-                    <option>제목</option>
-                    <option>작성자</option>
-                    <option>등록일</option>
+                <select id="search-filter" onchange="filterTable()">
+                    <option value="all">통합검색</option>
+                    <option value="제목">제목</option>
+                    <option value="작성자">작성자</option>
+                    <option value="등록일">등록일</option>
                 </select>
-                <input type="text" class="search-input" placeholder="검색어 입력">
-                <button>검색하기</button>
+                <input type="text" id="search-input" class="search-input" placeholder="검색어 입력" oninput="filterTable()">
+                <button onclick="filterTable()">검색하기</button>
             </div>
             <table class="qa-table">
                 <thead>
@@ -85,35 +86,41 @@
                         <th>상태</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody id="qa-table-body">
+                    <!-- 각 질문 항목 클릭 시 showContent 함수 호출 -->
+                    <tr onclick="showContent(1)">
                         <td>1</td>
                         <td>○○○○○○○○○○○○○○○○이 궁금해요</td>
-                        <td>○○○</td>
+                        <td>홍길동</td>
                         <td>2024-10-19</td>
                         <td>답변완료</td>
                     </tr>
-                    <tr>
+                    <tr onclick="showContent(2)">
                         <td>2</td>
                         <td>○○○○○○○○○○○○○○○○이 궁금해요</td>
-                        <td>○○○</td>
+                        <td>김영희</td>
                         <td>2024-10-19</td>
                         <td>질문중</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="pagination-and-write">
-                <div class="pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                </div>
-                <button class="write-btn">글쓰기</button>
-            </div>
         </div>
     </section>
+
+    <!-- 모달 창 (수정/답변 입력) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">답변 입력</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <textarea id="modal-textarea" class="modal-textarea" placeholder="내용을 입력하세요"></textarea>
+            <div class="modal-footer">
+                <button onclick="saveContent()">저장</button>
+                <button onclick="closeModal()">취소</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -122,5 +129,113 @@
             <p>Integrated R&D Development Platform</p>
         </div>
     </footer>
+
+    <script>
+        // 임시 로그인 상태
+        let isLoggedIn = true; // 로그인 상태 (true: 회원, false: 비회원)
+        let isAdmin = true; // 관리자 권한 (true: 관리자)
+        let currentQuestionId = null; // 현재 수정하거나 답변할 질문 ID
+
+        // 질문 클릭 시 내용 표시 함수
+        function showContent(questionId) {
+            if (!isLoggedIn) {
+                alert("로그인 하세요.");
+                window.location.href = "login.html"; // 로그인 페이지로 리디렉션
+            } else {
+                const contentContainer = document.getElementById("content-container");
+                contentContainer.style.display = "block";
+                currentQuestionId = questionId; // 현재 질문 ID 저장
+
+                // 질문 내용 표시 (예시로 고정된 내용 표시)
+                contentContainer.innerHTML = `
+                    <h3>질문 내용 - 질문 ID: ${questionId}</h3>
+                    <p>이 질문의 상세 내용입니다. 질문에 대한 자세한 정보를 여기에 표시합니다.</p>
+                `;
+
+                // 관리자에게만 수정 및 답변 버튼 제공
+                if (isAdmin) {
+                    contentContainer.innerHTML += `
+                        <div class="button-container">
+                            <button onclick="openModal('edit')">수정</button>
+                            <button onclick="openModal('answer')">답변</button>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // 필터링 함수
+        function filterTable() {
+            const statusFilter = document.getElementById("status-filter").value;
+            const searchFilter = document.getElementById("search-filter").value;
+            const searchInput = document.getElementById("search-input").value.toLowerCase();
+            const tableBody = document.getElementById("qa-table-body");
+            const rows = tableBody.getElementsByTagName("tr");
+
+            // 각 행을 필터링
+            for (let row of rows) {
+                const cells = row.getElementsByTagName("td");
+                const status = cells[4].textContent.trim(); // 상태 열
+                const title = cells[1].textContent.toLowerCase().trim(); // 제목 열
+                const author = cells[2].textContent.toLowerCase().trim(); // 작성자 열
+                const date = cells[3].textContent.trim(); // 등록일 열
+
+                let showRow = true;
+
+                // 진행 상태 필터 적용
+                if (statusFilter !== "all" && status !== statusFilter) {
+                    showRow = false;
+                }
+
+                // 통합 검색 필터 적용
+                if (searchInput) {
+                    if (searchFilter === "제목" && !title.includes(searchInput)) {
+                        showRow = false;
+                    } else if (searchFilter === "작성자" && !author.includes(searchInput)) {
+                        showRow = false;
+                    } else if (searchFilter === "등록일" && !date.includes(searchInput)) {
+                        showRow = false;
+                    } else if (searchFilter === "all" && !title.includes(searchInput) && !author.includes(searchInput) && !date.includes(searchInput)) {
+                        showRow = false;
+                    }
+                }
+
+                // 행 표시 또는 숨기기
+                row.style.display = showRow ? "" : "none";
+            }
+        }
+
+        // 모달 창 열기
+        function openModal(action) {
+            const modal = document.getElementById("modal");
+            const modalTitle = document.getElementById("modal-title");
+            const modalTextarea = document.getElementById("modal-textarea");
+
+            modal.style.display = "block";
+            modalTitle.textContent = action === 'edit' ? "수정하기" : "답변하기";
+            modalTextarea.value = ""; // 기존 내용 초기화
+        }
+
+        // 모달 창 닫기
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+
+        // 모달 내용 저장
+        function saveContent() {
+            const content = document.getElementById("modal-textarea").value;
+            alert(`질문 ID ${currentQuestionId}에 대한 내용이 저장되었습니다: ${content}`);
+            closeModal();
+        }
+
+        // 모달 창 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById("modal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
