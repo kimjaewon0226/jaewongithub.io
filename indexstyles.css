@@ -43,6 +43,20 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    h1 {
+        font-size: 1.3rem !important; /* 노트북 화면에 맞는 폰트 크기 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 1.8rem; /* 데스크탑 화면에 맞는 폰트 크기 */
+    }
+}
+
 /* Center navigation */
 .center-nav {
     display: flex;
@@ -63,7 +77,15 @@ h1 {
 @media (max-width: 600px) {
     .center-nav a {
         margin: 0 1vw; /* 작은 화면에서 여백을 줄여서 한 줄 유지 */
-        font-size: 0.7rem; /* 작은 화면에서 폰트 크기 축소 */
+        font-size: 0.2rem; /* 작은 화면에서 폰트 크기 축소 */
+    }
+}
+
+/* 노트북 화면에서 스타일 조정 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .center-nav a {
+        margin: 0 1vw; /* 노트북 화면에서 적당한 여백 */
+        font-size: 0.8rem; /* 노트북 화면에 맞는 폰트 크기 */
     }
 }
 
@@ -124,6 +146,28 @@ h1 {
     }
 }
 
+/* 노트북 화면에서 드롭다운 조정 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .dropdown-content {
+        min-width: 60vw; /* 노트북 화면에서 전체 너비의 60% */
+        border-radius: 8px; /* 테두리 반경 조정 */
+    }
+    .dropdown-content a {
+        padding: 1.5vh 2vw; /* 적당한 패딩 */
+    }
+}
+
+/* 데스크탑 화면에서 드롭다운 조정 */
+@media (min-width: 1200px) {
+    .dropdown-content {
+        min-width: 10vw; /* 데스크탑 화면에서 전체 너비의 50% */
+        border-radius: 10px; /* 테두리 반경 확대 */
+    }
+    .dropdown-content a {
+        padding: 1vh 1.5vw; /* 적당한 패딩 */
+    }
+}
+
 /* Right navigation */
 .right-nav {
     white-space: nowrap;
@@ -153,6 +197,19 @@ h1 {
     .right-nav a {
         font-size: 0.9rem; /* 작은 화면에서 폰트 크기 축소 */
         margin-left: 1vw; /* 여백을 조금 더 줄임 */
+    }
+}
+
+/* 노트북 화면에서 Right navigation 조정 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .right-nav {
+        margin-right: 5px; /* 적당한 오른쪽 여백 */
+        text-align: right; /* 오른쪽 정렬 유지 */
+    }
+
+    .right-nav a {
+        font-size: 1rem; /* 노트북 화면에 맞는 폰트 크기 */
+        margin-left: 1.2vw; /* 적당한 여백 */
     }
 }
 
@@ -227,6 +284,28 @@ h1 {
         font-size: 3vw; /* 버튼 글씨 크기 줄임 */
         padding: 1vh 2vw; /* 버튼 패딩 줄임 */
         margin-top: 5vh;
+    }
+}
+
+/* 노트북 화면에서 스타일 조정 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .main-banner {
+        height: 70vh; /* 노트북 화면에서 적당한 높이 */
+        padding: 10vh 0;
+    }
+    .main-banner h2 {
+        font-size: 2.5rem; /* 노트북 화면에 맞는 폰트 크기 */
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+    .main-buttons {
+        gap: 2vh; /* 노트북 화면에서 적당한 간격 */
+        flex-direction: row; /* 가로 정렬 유지 */
+    }
+    .button {
+        font-size: 0.9rem; /* 버튼 글씨 크기 조정 */
+        padding: 1.5vh 2vw; /* 버튼 패딩 조정 */
+        margin-top: 4vh;
     }
 }
 
@@ -326,6 +405,28 @@ h1 {
     }
 }
 
+/* 노트북 화면에서 스타일 조정 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .rnd-status {
+        height: 75vh; /* 노트북 화면에 적합한 높이 */
+        padding: 4vh 3vw;
+    }
+    .rnd-status h3 {
+        font-size: 1.5rem; /* 노트북 화면에 맞는 폰트 크기 */
+        margin-left: 3%; /* 제목의 왼쪽 여백 */
+        margin-top: 2vh;
+    }
+    .rnd-status .text {
+        padding: 2vh 2vw;
+        max-width: 70%; /* 노트북 화면에 맞는 최대 너비 */
+        height: 35vh; /* 노트북 화면에 맞는 높이 */
+        margin-left: auto; /* 가운데 정렬 유지 */
+    }
+    .highlight {
+        font-size: 1.2rem; /* 노트북 화면에 맞는 하이라이트 폰트 크기 */
+    }
+}
+
 /* 큰 화면에서 스타일 조정 */
 @media (min-width: 1200px) {
     .rnd-status {
@@ -385,6 +486,26 @@ h1 {
     .charts img {
         transform: translateX(0); /* translate 효과 제거 */
         margin: 0 auto 4vh; /* 아래 여백 추가 */
+    }
+}
+
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .rnd-content {
+        gap: 2vw; /* 노트북 화면에 맞는 간격 */
+        flex-direction: row; /* 가로 정렬 유지 */
+        align-items: flex-start; /* 기본 정렬 유지 */
+    }
+    .rnd-content .text {
+        width: 60%; /* 노트북 화면에 맞게 너비 조정 */
+        font-size: 1rem; /* 적당한 폰트 크기 */
+    }
+    .rnd-content .charts {
+        width: 35%; /* 차트 너비 조정 */
+    }
+    .charts img {
+        transform: translateX(0); /* translate 효과 제거 */
+        margin-bottom: 3vh; /* 아래 여백 */
     }
 }
 
@@ -478,6 +599,64 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .related-sites {
+        height: auto; /* 고정 높이 제거 */
+        padding: 4vh 5%; /* 적당한 패딩 */
+        background-size: cover; /* 이미지 크기 조정 */
+    }
+
+    .related-sites h3 {
+        font-size: 1.8rem; /* 노트북 화면에 맞는 폰트 크기 */
+        margin-bottom: 3vh;
+    }
+
+    .related-sites table {
+        width: 90%; /* 화면에 맞춤 */
+        padding: 1vw;
+        max-width: 90%; /* 테이블 최대 너비 */
+    }
+
+    .related-sites th:nth-child(1), .related-sites td:nth-child(1) {
+        width: 30%; /* 노트북 화면에 맞춘 첫 번째 열 너비 */
+    }
+
+    .related-sites th:nth-child(2), .related-sites td:nth-child(2) {
+        width: 70%; /* 노트북 화면에 맞춘 두 번째 열 너비 */
+        padding-left: 2vw;
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .related-sites {
+        height: auto; /* 고정 높이 제거 */
+        padding: 3vh 8%; /* 넓은 패딩으로 조정 */
+        background-size: cover; /* 이미지 크기 조정 */
+    }
+
+    .related-sites h3 {
+        font-size: 2rem; /* 데스크탑 화면에 적합한 폰트 크기 */
+        margin-bottom: 4vh;
+    }
+
+    .related-sites table {
+        width: 80%; /* 데스크탑 화면에 맞춘 너비 */
+        padding: 1.5vw;
+        max-width: 80%; /* 테이블 최대 너비 */
+    }
+
+    .related-sites th:nth-child(1), .related-sites td:nth-child(1) {
+        width: 15%; /* 데스크탑 화면에서 첫 번째 열 너비 */
+    }
+
+    .related-sites th:nth-child(2), .related-sites td:nth-child(2) {
+        width: 75%; /* 데스크탑 화면에서 두 번째 열 너비 */
+        padding-left: 2vw;
+    }
+}
+
 /* Hide .data-row by default */
 .data-row {
     display: none;
@@ -519,6 +698,36 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .button-container {
+        text-align: left; /* 기본 왼쪽 정렬 */
+        margin-right: 2vw; /* 적당한 오른쪽 여백 */
+        margin-top: 2vh;
+    }
+
+    .go-button {
+        padding: 1.2vh 2.5vw; /* 버튼 크기 조정 */
+        font-size: 1rem; /* 폰트 크기 조정 */
+        width: 60%; /* 버튼 너비 조정 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .button-container {
+        text-align: right; /* 기본 왼쪽 정렬 유지 */
+        margin-right: 8vw; /* 여백 더 넉넉하게 */
+        margin-top: 2vh;
+    }
+
+    .go-button {
+        padding: 1vh 2vw; /* 더 작은 패딩으로 조정 */
+        font-size: 1rem; /* 폰트 크기 유지 */
+        width: 50%; /* 버튼을 더 좁게 */
+    }
+}
+
 /* 기본 스타일 */
 .related-sites td a {
     color: blue;
@@ -552,6 +761,30 @@ h1 {
 
     .related-sites td a {
         font-size: 0.9rem; /* 작은 화면에서 링크 크기 조정 */
+    }
+}
+
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .info-page {
+        padding: 4vh 4vw; /* 노트북 화면에 맞는 padding */
+        gap: 2vh; /* 노트북 화면에 맞는 gap */
+    }
+
+    .related-sites td a {
+        font-size: 1rem; /* 노트북 화면에 맞는 링크 크기 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .info-page {
+        padding: 5vh 5vw; /* 데스크탑 화면에 맞는 padding */
+        gap: 3vh; /* 데스크탑 화면에 맞는 gap */
+    }
+
+    .related-sites td a {
+        font-size: 1.1rem; /* 데스크탑 화면에 맞는 링크 크기 */
     }
 }
 
@@ -590,6 +823,34 @@ h1 {
     .section {
         max-width: 100%; /* 작은 화면에서는 가로 폭 전체 사용 */
         min-height: 300px; /* 작은 화면에서의 최소 높이 조정 */
+    }
+}
+
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .horizontal-container {
+        flex-direction: row; /* 가로 배열 유지 */
+        gap: 2%; /* 노트북 화면에 맞는 gap */
+        max-width: 80vw; /* 노트북 화면에 맞는 최대 너비 */
+    }
+
+    .section {
+        max-width: 48%; /* 노트북 화면에서 적당한 너비 */
+        min-height: 350px; /* 노트북 화면에서 최소 높이 조정 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .horizontal-container {
+        flex-direction: row; /* 가로 배열 유지 */
+        gap: 3%; /* 데스크탑 화면에 맞는 넉넉한 gap */
+        max-width: 70vw; /* 데스크탑 화면에 맞는 최대 너비 */
+    }
+
+    .section {
+        max-width: 45%; /* 데스크탑 화면에서 적당한 너비 */
+        min-height: 400px; /* 데스크탑 화면에서 최소 높이 조정 */
     }
 }
 
@@ -641,6 +902,38 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .section {
+        padding: 2%; /* 노트북 화면에 맞는 패딩 */
+        max-width: 85%; /* 노트북 화면에 적합한 최대 너비 */
+        margin-top: 2%; /* 적당한 여백 */
+        min-width: 600px; /* 최소 너비 지정 */
+    }
+
+    .section h3 {
+        font-size: 1.2rem; /* 노트북 화면에 맞는 폰트 크기 */
+        padding: 1.2vh 3vw; /* 적당한 패딩 */
+        margin: -2% -2% 2% -2%; /* 여백 조정 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .section {
+        padding: 1.5%; /* 데스크탑 화면에 맞는 패딩 */
+        max-width: 80%; /* 데스크탑 화면에 맞는 최대 너비 */
+        margin-top: 1.5%; /* 여백 조정 */
+        min-width: 700px; /* 넉넉한 최소 너비 */
+    }
+
+    .section h3 {
+        font-size: 1.5rem; /* 데스크탑 화면에 맞는 폰트 크기 */
+        padding: 1vh 2.5vw; /* 패딩 조정 */
+        margin: -1% -1% 1.5% -1%; /* 여백 조정 */
+    }
+}
+
 /* Tech Details Section */
 .tech-details {
     display: flex;
@@ -688,6 +981,48 @@ h1 {
         margin-left: 0;
         padding-left: 2%;
         border-left: none; /* 작은 화면에서 테두리 제거 */
+    }
+}
+
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .tech-details {
+        flex-direction: row; /* 가로 배치 유지 */
+        align-items: center;
+        margin-bottom: 2%; /* 적당한 여백 */
+    }
+
+    .tech-details img {
+        width: 40%; /* 노트북 화면에 맞는 이미지 크기 */
+        margin-right: 2%; /* 이미지 오른쪽 여백 추가 */
+        margin-bottom: 0; /* 가로 배치 시 아래 여백 제거 */
+    }
+
+    .tech-details p {
+        margin-left: 1%;
+        padding-left: 2%;
+        border-left: 2px solid #ccc; /* 노트북 화면에서 왼쪽 테두리 추가 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .tech-details {
+        flex-direction: row; /* 가로 배치 유지 */
+        align-items: center;
+        margin-bottom: 2%; /* 여백 유지 */
+    }
+
+    .tech-details img {
+        width: 30%; /* 데스크탑 화면에 맞는 이미지 크기 */
+        margin-right: 2.5%; /* 이미지 오른쪽 여백 추가 */
+        margin-bottom: 0; /* 가로 배치 시 아래 여백 제거 */
+    }
+
+    .tech-details p {
+        margin-left: 1.5%;
+        padding-left: 2.5%;
+        border-left: 2px solid #ccc; /* 데스크탑 화면에서 왼쪽 테두리 유지 */
     }
 }
 
@@ -848,6 +1183,82 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .team {
+        padding: 2%;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+    .team h3 {
+        font-size: 1.5rem; /* 노트북 화면에 맞는 폰트 크기 */
+        padding: 1.5%;
+        width: 100%;
+        margin: 0 0 3% 0;
+    }
+
+    .team-member {
+        width: 60vw; /* 노트북 화면에 맞는 멤버 카드 너비 */
+        margin-top: 1%;
+    }
+
+    .team-member img {
+        width: 50%; /* 노트북 화면에 맞는 이미지 크기 */
+    }
+
+    .team-member p {
+        font-size: 1rem; /* 텍스트 크기 조정 */
+    }
+
+    .info-button {
+        padding: 1.5% 3%;
+        font-size: 1rem; /* 노트북 화면에 맞는 버튼 폰트 크기 */
+    }
+
+    .card-back {
+        max-height: 300px; /* 노트북 화면에서의 스크롤 영역 제한 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .team {
+        padding: 2%;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+    }
+
+    .team h3 {
+        font-size: 1.8rem; /* 데스크탑 화면에 맞는 폰트 크기 */
+        padding: 1%;
+        width: 100%;
+        margin: 0 0 2% 0;
+    }
+
+    .team-member {
+        width: 50vw; /* 데스크탑 화면에 맞는 멤버 카드 너비 */
+        margin-top: 1%;
+    }
+
+    .team-member img {
+        width: 40%; /* 데스크탑 화면에 맞는 이미지 크기 */
+    }
+
+    .team-member p {
+        font-size: 1.1rem; /* 텍스트 크기 조정 */
+    }
+
+    .info-button {
+        padding: 1% 2.5%;
+        font-size: 1rem; /* 데스크탑 화면에 맞는 버튼 폰트 크기 */
+    }
+
+    .card-back {
+        max-height: 400px; /* 데스크탑 화면에서의 스크롤 영역 제한 */
+    }
+}
+
 /*===========================================================================이 위로는 반응형 웹 완료===========================================================================*/
 /*============================================================================이 아래로 작업해야 함=============================================================================*/
 
@@ -903,6 +1314,30 @@ h1 {
     }
 }
 
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .qna th, .qna td {
+        font-size: 1.2rem; /* 노트북 화면에 맞는 글씨 크기 */
+        padding: 1vw; /* 적당한 패딩 */
+    }
+    .more-button {
+        font-size: 1rem; /* 노트북 화면에 맞는 버튼 텍스트 크기 */
+        padding: 0.8vw 2vw; /* 버튼 패딩 조정 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    .qna th, .qna td {
+        font-size: 1.5rem; /* 데스크탑 화면에 맞는 글씨 크기 */
+        padding: 1.2vw; /* 넉넉한 패딩 */
+    }
+    .more-button {
+        font-size: 1.2rem; /* 데스크탑 화면에 맞는 버튼 텍스트 크기 */
+        padding: 1vw 2.5vw; /* 버튼 패딩 조정 */
+    }
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -932,5 +1367,31 @@ footer nav a:hover {
     footer nav a {
         margin: 0 2vw; /* 작은 화면에서 링크 간격 확대 */
         font-size: 3vw; /* 작은 화면에서 링크 폰트 크기 확대 */
+    }
+}
+
+/* 노트북 화면용 스타일 */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    footer {
+        padding: 3% 4%; /* 노트북 화면에 맞는 패딩 */
+        font-size: 1.2rem; /* 노트북 화면에 맞는 폰트 크기 */
+    }
+    
+    footer nav a {
+        margin: 0 1.5vw; /* 노트북 화면에서 링크 간격 조정 */
+        font-size: 1.2rem; /* 노트북 화면에 맞는 링크 폰트 크기 */
+    }
+}
+
+/* 데스크탑 화면용 스타일 */
+@media (min-width: 1200px) {
+    footer {
+        padding: 2% 3%; /* 데스크탑 화면에 맞는 패딩 */
+        font-size: 1.5rem; /* 데스크탑 화면에 맞는 폰트 크기 */
+    }
+    
+    footer nav a {
+        margin: 0 1vw; /* 데스크탑 화면에서 링크 간격 조정 */
+        font-size: 1.5rem; /* 데스크탑 화면에 맞는 링크 폰트 크기 */
     }
 }
