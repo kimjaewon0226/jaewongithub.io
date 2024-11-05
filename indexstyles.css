@@ -17,25 +17,30 @@ body {
 
 /* Container Flexbox */
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly; /* 요소 간의 공간을 최대한 분배 */
     align-items: center;
     background-color: #f5f5f5;
-    gap: 10px; /* 요소 사이 여백 */
 }
 
 /* Header title on the left */
 h1 {
-    font-size: 34px;
+    font-size: 2.125rem;
     color: #333;
     flex-shrink: 0;
     white-space: nowrap;
     text-align: left;
-    margin-left: -300px;
+    margin-right: 1%; /* -300px을 %로 변환 */
     padding: 1.5%;
+}
+
+/* 작은 화면일 때 폰트 크기 조정 */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 5vw; /* 화면이 작아지면 뷰포트에 따라 조정 */
+    }
 }
 
 /* Center navigation */
@@ -43,13 +48,31 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap; /* 한 줄 유지 */
 }
 
 .center-nav a {
-    margin: 0 10px;
+    margin: 0 1vw; /* 여백을 뷰포트 비율로 설정 */
     text-decoration: none;
     color: #333;
-    font-size: 1rem;
+    font-size: 0.85rem; /* 기본 폰트 크기 */
+    padding: 3px 0px; /* 링크 버튼 여백 추가 */
+}
+
+/* 작은 화면에서 스타일 조정 */
+@media (max-width: 600px) {
+    .center-nav a {
+        margin: 0 1vw; /* 작은 화면에서 여백을 줄여서 한 줄 유지 */
+        font-size: 0.7rem; /* 작은 화면에서 폰트 크기 축소 */
+    }
+}
+
+/* 큰 화면에서 스타일 조정 */
+@media (min-width: 1200px) {
+    .center-nav a {
+        margin: 0 0.8vw; /* 큰 화면에서 여백을 조금 더 좁게 */
+        font-size: 1rem; /* 큰 화면에서 폰트 크기 확대 */
+    }
 }
 
 .center-nav a:hover {
@@ -58,51 +81,59 @@ h1 {
 
 /* 드롭다운 스타일 */
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: relative; /* 드롭다운 부모 요소에 상대 위치 설정 */
 }
 
 .dropdown-content {
     max-height: 0; /* 기본적으로 숨김 */
-    overflow: hidden;
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
     position: absolute;
     top: 100%;
     left: 0;
     background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    min-width: 120px;
+    box-shadow: 0px 0.5vh 1vh rgba(0, 0, 0, 0.2); /* 높이 단위에 vh 사용 */
+    border-radius: 5%; /* 비율에 따라 변경 */
+    min-width: 10vw; /* 뷰포트 너비의 %로 최소 너비 설정 */
     z-index: 1;
     opacity: 0; /* 초기 상태에서 숨김 */
-    transition: max-height 0.5s ease, opacity 0.5s ease; /* 슬라이드와 페이드 효과 */
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* 애니메이션 효과 */
 }
 
+/* 드롭다운 링크 스타일 */
 .dropdown-content a {
     color: #333;
-    padding: 12px 16px;
+    padding: 1vh 2vw; /* 뷰포트 단위를 사용한 패딩 */
     text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
+    display: block; /* 링크를 블록 요소로 설정 */
 }
 
 /* 드롭다운 메뉴가 보여질 때 */
 .dropdown:hover .dropdown-content {
-    max-height: 500px; /* 충분히 큰 값으로 설정해 메뉴 전체가 보이도록 함 */
-    opacity: 1; /* 페이드 효과로 보이게 함 */
+    max-height: 50vh; /* 드롭다운 높이를 충분히 설정 */
+    opacity: 1; /* 드롭다운 표시 */
+}
+
+/* 작은 화면에서 드롭다운 조정 */
+@media (max-width: 600px) {
+    .dropdown-content {
+        min-width: 80vw; /* 작은 화면에서 전체 너비의 80% */
+        border-radius: 5px; /* 테두리 반경 조정 */
+    }
+    .dropdown-content a {
+        padding: 2vh 3vw; /* 패딩을 더 넓게 */
+    }
 }
 
 /* Right navigation */
 .right-nav {
     white-space: nowrap;
     text-align: right;
-    margin-right: -300px;
+    margin-left: 0; /* 왼쪽 여백을 자동으로 설정하여 오른쪽으로 이동 */
+    margin-right: 50%; /* 오른쪽 여백을 제거 */
 }
 
 .right-nav a {
-    margin-left: 10px;
+    margin-left: 2vw; /* 뷰포트 너비에 비례한 마진 */
     text-decoration: none;
     color: #333;
     font-size: 1rem;
@@ -112,43 +143,108 @@ h1 {
     text-decoration: underline;
 }
 
+/* 작은 화면에서 Right navigation 조정 */
+@media (max-width: 600px) {
+    .right-nav {
+        margin-right: 0; /* 작은 화면에서는 오른쪽 여백을 제거 */
+        text-align: center; /* 가운데 정렬로 변경 */
+    }
+
+    .right-nav a {
+        font-size: 0.9rem; /* 작은 화면에서 폰트 크기 축소 */
+        margin-left: 1vw; /* 여백을 조금 더 줄임 */
+    }
+}
+
+/* 큰 화면에서 Right navigation 조정 */
+@media (min-width: 1200px) {
+    .right-nav {
+        margin-right: 10px; /* 오른쪽 여백을 추가하여 이동 */
+    }
+
+    .right-nav a {
+        font-size: 1.1rem; /* 큰 화면에서 폰트 크기 확대 */
+        margin-left: 1.5vw; /* 큰 화면에서 여백 확대 */
+    }
+}
+
 /* Main Banner */
 .main-banner {
     background-image: url('picture/background_wrapper.jpg');
     background-size: cover;
-    height: 650px;
-    padding: 100px 0;
+    height: 80vh; /* 높이 증가 */
+    padding: 12vh 0; /* 상하 여백을 뷰포트 높이에 맞춰 조정 */
     text-align: center;
     color: #000000;
 }
 
 .main-banner h2 {
-    font-size: 2.5rem;
-    margin-top: 60px;
-    margin-bottom: 20px;
+    font-size: 5vw; /* 화면 너비에 맞춰 폰트 크기 조정 */
+    margin-top: 5vh;
+    margin-bottom: 2vh;
 }
 
 .main-buttons {
     display: flex;
-    gap: 50px; /* 버튼 사이의 간격 */
-    justify-content: center; /* 가운데 정렬을 위한 설정 */
+    gap: 4vw; /* 뷰포트 너비에 맞춰 버튼 간격 조정 */
+    justify-content: center;
 }
 
+/* Button 스타일 */
 .button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #fcff39; /* 원하는 색상으로 변경 */
+    padding: 0.5vh 1vw; /* 상하 패딩을 줄이고, 좌우 패딩을 줄임 */
+    background-color: #fcff39;
     color: #000000;
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 16px;
-    margin-top: 120px;
-    border: 2px solid #000000; /* 테두리 선 설정 */
+    font-size: 1.2vw; /* 뷰포트 너비에 맞춘 폰트 크기 줄임 */
+    margin-top: 10vh; /* 뷰포트 높이에 맞춘 상단 여백 */
+    border: 0.2vw solid #000000; /* 뷰포트 너비에 맞춘 테두리 */
 }
 
 .button:hover {
-    background-color: #ffffff; /* 원하는 호버 색상 */
+    background-color: #ffffff;
+}
+
+/* 작은 화면에서 스타일 조정 */
+@media (max-width: 600px) {
+    .main-banner {
+        height: 50vh; /* 작은 화면에서 높이 조정 */
+        padding: 8vh 0;
+    }
+    .main-banner h2 {
+        font-size: 6vw;
+        margin-top: 3vh;
+        margin-bottom: 2vh;
+    }
+    .main-buttons {
+        flex-direction: column; /* 작은 화면에서는 버튼을 세로 정렬 */
+        gap: 3vh;
+    }
+    .button {
+        font-size: 3vw; /* 버튼 글씨 크기 줄임 */
+        padding: 1vh 2vw; /* 버튼 패딩 줄임 */
+        margin-top: 5vh;
+    }
+}
+
+/* 큰 화면에서 스타일 조정 */
+@media (min-width: 1200px) {
+    .main-banner {
+        height: 80vh; /* 큰 화면에서 높이 증가 */
+        padding: 12vh 0;
+    }
+    .main-banner h2 {
+        font-size: 3rem;
+    }
+    .main-buttons {
+        gap: 2vw; /* 큰 화면에서 간격 축소 */
+    }
+    .button {
+        font-size: 1rem; /* 버튼 글씨 크기 줄임 */
+    }
 }
 
 /* R&D Status Section */
@@ -157,36 +253,93 @@ h1 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px;
+    padding: 5vh 2vw; /* 상하 패딩을 뷰포트 높이에, 좌우를 뷰포트 너비에 맞춰 조정 */
     color: #333;
-    height: 750px;
+    height: 100vh; /* 높이를 증가시켜 배경 이미지가 더 많이 보이도록 설정 */
+    display: flex; /* Flexbox 활성화 */
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center; /* 가로 방향으로 가운데 정렬 */
+    justify-content: center; /* 세로 방향으로 가운데 정렬 */
+}
+
+.rnd-status .rnd-content {
+    position: relative; /* h3를 절대 위치로 배치할 수 있도록 설정 */
+    width: 80%; /* 컨텐츠 너비 조정 */
 }
 
 .rnd-status h3 {
-    font-size: 1.8rem;
-    text-align: left;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    margin-left: 300px;
+    font-size: 4vw; /* 화면 너비에 맞춰 폰트 크기 조정 */
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+    position: absolute; /* 절대 위치로 설정 */
+    top: 0; /* 상단에 배치 */
+    left: 0; /* 왼쪽에 배치 */
+    margin: 0; /* 여백 제거 */
+    margin-top: 2%;
 }
 
 .rnd-status .text {
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    width: 70%;
-    max-width: 700px;
-    height: 520px;
+    padding: 2vh; /* 상하 좌우 패딩을 뷰포트 높이에 맞춰 조정 */
+    border-radius: 1vw; /* 뷰포트 너비에 맞춘 모서리 반경 */
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2); /* 뷰포트 너비에 맞춘 그림자 크기 */
+    margin: 2vh auto;
+    margin-top: 7%;
+    width: 50% !important; /* 너비를 50%로 설정하여 가득 차지 않게 함 */ 
+    max-width: 70vw; /* 최대 너비 조정 */
+    height: 70vh !important; /* 높이 줄임 */
     overflow-y: auto;
-    margin-left: 300px;
+}
+
+.rnd-status .charts {
+    margin: 2vh auto; /* 중앙 정렬을 위한 마진 */
+    display: flex; /* 차트를 세로로 배치하기 위해 flex 사용 */
+    flex-direction: column; /* 차트를 세로 방향으로 정렬 */
+    align-items: center; /* 차트들을 가운데 정렬 */
+    height: 70vh; /* div class="text"와 동일한 높이 설정 */
+    margin-top: 7%;
 }
 
 /* Highlighted Text */
 .highlight {
-    font-size: 1.5em;
+    font-size: 3vw; /* 뷰포트 너비에 맞춘 폰트 크기 */
     font-weight: bold;
+}
+
+/* 작은 화면에서 스타일 조정 */
+@media (max-width: 600px) {
+    .rnd-status {
+        height: 55vh; /* 작은 화면에서 높이를 줄임 */
+        padding: 5vh 3vw;
+    }
+    .rnd-status h3 {
+        font-size: 5vw;
+        margin-left: 2vw;
+        margin-top: 3vh;
+    }
+    .rnd-status .text {
+        padding: 3vh 2vw;
+        margin-left: auto; /* 작은 화면에서 가운데 정렬 */
+        height: 30vh; /* 높이 줄임 */
+    }
+    .highlight {
+        font-size: 4vw;
+    }
+}
+
+/* 큰 화면에서 스타일 조정 */
+@media (min-width: 1200px) {
+    .rnd-status {
+        height: 90vh; /* 큰 화면에서 높이 유지 */
+    }
+    .rnd-status h3 {
+        font-size: 2rem;
+        margin-left: 5%; /* 제목의 왼쪽 여백 */
+    }
+    .rnd-status .text {
+        padding: 2vh 3vw;
+        max-width: 60%;
+        height: 40vh; /* 필요한 경우 높이를 조정 */
+    }
 }
 
 /* R&D Content Layout */
@@ -194,6 +347,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 2vw; /* 요소 간 여백을 뷰포트 너비에 따라 조정 */
 }
 
 .rnd-content .text {
@@ -208,10 +362,46 @@ h1 {
 
 .charts img {
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
     display: block;
-    margin: 20px auto;
-    transform: translateX(-200px);
+    margin: 2vh auto;
+    transform: translateX(-10%);
+}
+
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .rnd-content {
+        flex-direction: column;
+        align-items: center; /* 가운데 정렬 */
+        gap: 4vh;
+    }
+    .rnd-content .text,
+    .rnd-content .charts {
+        width: 90%; /* 작은 화면에서는 90% 너비로 조정 */
+    }
+    .rnd-content .text {
+        font-size: 1.2rem; /* 폰트 크기 약간 키우기 */
+    }
+    .charts img {
+        transform: translateX(0); /* translate 효과 제거 */
+        margin: 0 auto 4vh; /* 아래 여백 추가 */
+    }
+}
+
+/* 큰 화면용 스타일 */
+@media (min-width: 1200px) {
+    .rnd-content {
+        gap: 3vw;
+    }
+    .rnd-content .text {
+        width: 55%; /* 큰 화면에서 너비 약간 줄이기 */
+    }
+    .rnd-content .charts {
+        width: 40%; /* 차트 너비 확대 */
+    }
+    .charts img {
+        margin-bottom: 3vh;
+    }
 }
 
 /* Related Sites Section */
@@ -221,26 +411,26 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 750px;
-    padding: 100px 15px;
+    height: 850px;
+    padding: 8vh 5%;
 }
 
 .related-sites h3 {
     font-size: 1.8rem;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 3vh;
 }
 
 .related-sites table {
     background-color: #f5f5f5;
-    width: 60%;
+    width: 80%;
     border-collapse: collapse;
     margin: 0 auto;
-    margin-left: 410px;
+    max-width: 1200px;
 }
 
 .related-sites th, .related-sites td {
-    padding: 10px;
+    padding: 1vh 1vw;
     border: 1px solid #ccc;
     text-align: left;
 }
@@ -250,13 +440,42 @@ h1 {
 }
 
 .related-sites th:nth-child(1), .related-sites td:nth-child(1) {
-    width: 100px;
+    width: 10%;
     text-align: center;
 }
 
 .related-sites th:nth-child(2), .related-sites td:nth-child(2) {
-    width: 800px;
-    padding-left: 25px;
+    width: 70%;
+    padding-left: 2vw;
+}
+
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .related-sites {
+        height: auto; /* 고정 높이 제거 */
+        padding: 5vh 4%;
+        background-size: contain; /* 이미지 크기 조정 */
+    }
+
+    .related-sites h3 {
+        font-size: 1.5rem; /* 폰트 크기 약간 축소 */
+        margin-bottom: 2vh;
+    }
+
+    .related-sites table {
+        width: 100%; /* 화면에 맞춤 */
+        padding: 1vw;
+        max-width: 100%;
+    }
+
+    .related-sites th:nth-child(1), .related-sites td:nth-child(1) {
+        width: 25%; /* 작은 화면에 맞춰 너비 조정 */
+    }
+
+    .related-sites th:nth-child(2), .related-sites td:nth-child(2) {
+        width: 75%; /* 작은 화면에 맞춰 너비 조정 */
+        padding-left: 3vw;
+    }
 }
 
 /* Hide .data-row by default */
@@ -266,12 +485,12 @@ h1 {
 
 .button-container {
     text-align: right;
-    margin-top: 20px;
-    margin-right: 340px;
+    margin-top: 3vh;
+    margin-right: 15%; /* 오른쪽 여백 증가 */
 }
 
 .go-button {
-    padding: 10px 20px;
+    padding: 1vh 2vw;
     background-color: #ffffff;
     color: #000000;
     border: 2px solid #333333;
@@ -285,7 +504,22 @@ h1 {
     background-color: #929292;
 }
 
-/* Links in related-sites table */
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .button-container {
+        text-align: center;
+        margin-right: 0; /* 작은 화면에서 오른쪽 여백 제거 */
+        margin-top: 3vh;
+    }
+
+    .go-button {
+        padding: 1.5vh 3vw; /* 버튼 크기 조정 */
+        font-size: 1.1rem; /* 폰트 크기 약간 증가 */
+        width: 80%; /* 버튼을 더 넓게 */
+    }
+}
+
+/* 기본 스타일 */
 .related-sites td a {
     color: blue;
     text-decoration: none;
@@ -295,18 +529,30 @@ h1 {
     color: darkblue;
 }
 
-/* Info Page Section */
+/*info-page style*/
 .info-page {
     background: url('picture/main_background_image.jpg') center/cover no-repeat;
-    padding: 70px 15px;
+    padding: 5vh 5vw; /* 상대 단위로 변경 */
     font-family: Arial, sans-serif;
     color: #333;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2vh;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .info-page {
+        padding: 3vh 3vw; /* 작은 화면에서 padding을 줄임 */
+        gap: 1.5vh; /* 작은 화면에서 gap 줄이기 */
+    }
+
+    .related-sites td a {
+        font-size: 0.9rem; /* 작은 화면에서 링크 크기 조정 */
+    }
 }
 
 /* List Styles */
@@ -318,248 +564,373 @@ h1 {
 .section ul li::before {
     content: "ㅁ ";
     color: black;
-    margin-right: 8px;
+    margin-right: 1vw; /* 상대 단위로 변경 */
     font-weight: bold;
 }
 
 /* Horizontal Container */
 .horizontal-container {
     display: flex;
-    gap: 20px;
+    gap: 2%; /* 상대 단위로 변경 */
     justify-content: space-between;
+    align-items: stretch; /* 모든 .section 요소가 같은 높이로 맞춰짐 */
     width: 100%;
-    max-width: 1200px;
+    max-width: 80vw; /* 화면 크기에 따라 조정되도록 설정 */
     box-sizing: border-box;
-    align-items: flex-start;
+}
+
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .horizontal-container {
+        flex-direction: column; /* 세로 배열로 변경 */
+        gap: 1.5%; /* 작은 화면에서 gap 줄이기 */
+        max-width: 90vw; /* 작은 화면에서 최대 너비 조정 */
+    }
+
+    .section {
+        max-width: 100%; /* 작은 화면에서는 가로 폭 전체 사용 */
+        min-height: 300px; /* 작은 화면에서의 최소 높이 조정 */
+    }
 }
 
 /* Section Styling */
 .section {
     background-color: white;
     border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
     flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-    margin-top: 20px;
-    height: 350px;
+    min-width: 250px; /* 작은 화면에서도 표시되도록 최소 너비 조정 */
+    max-width: 48%; /* 최대 너비를 %로 설정해 반응형 적용 */
+    min-height: 400px; /* 반응형을 위한 최소 높이 */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 요소 간의 균일한 간격을 위해 추가 */
 }
 
 .section h3 {
-    font-size: 1rem;
+    font-size: 1.2rem; /* 폰트 크기를 상대 단위로 설정 */
     background-color: #666;
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1vh 2vw; /* 패딩을 반응형 단위로 설정 */
+    border-radius: 0.5rem;
     text-align: center;
-    margin: -20px -20px 20px -20px;
-    width: 108%;
-    margin-bottom: 20px;
+    margin: -2% -2% 2% -2%; /* 상대 단위로 여백 조정 */
+    width: auto; /* 폭을 자동으로 설정 */
 }
 
 .section h4 {
     text-align: center;
 }
 
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .section {
+        padding: 3%; /* 작은 화면에서는 패딩을 더 여유롭게 */
+        max-width: 90%;
+        margin-top: 3%;
+        min-width: auto; /* 최소 너비 자동 */
+    }
+
+    .section h3 {
+        font-size: 1rem; /* 작은 화면에서 폰트 크기 조정 */
+        padding: 1.5vh 4vw; /* 작은 화면에서 패딩을 더 넓게 */
+        margin: -3% -3% 3% -3%; /* 작은 화면에서 여백을 조금 더 확보 */
+    }
+}
+
 /* Tech Details Section */
 .tech-details {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 2%;
 }
 
 .tech-details img {
-    width: 120px;
-    height: 120px;
-    margin-right: 15px;
+    width: 15%; /* 이미지의 너비를 %로 설정 */
+    max-width: 120px; /* 큰 화면에서는 최대 크기 제한 */
+    height: auto; /* 고정된 높이 대신 비율 유지 */
+    margin-right: 2%;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
 
 .tech-details p {
-    margin-left: 15px;
-    padding-left: 15px;
-    border-left: 2px solid #ccc;
+    margin-left: 2%;
+    padding-left: 3%;
+    border-left: 0.2vw solid #ccc; /* 테두리를 상대 단위로 설정 */
 }
 
+/* 각 요소 사이 간격을 화면 크기에 맞춰 조정 */
 .tech-details:not(:last-child) {
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    border-bottom: 0.2vh solid #ddd;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+
+/* 작은 화면용 스타일 */
+@media (max-width: 768px) {
+    .tech-details {
+        flex-direction: column; /* 작은 화면에서는 세로 배치 */
+        align-items: flex-start;
+        margin-bottom: 3%;
+    }
+
+    .tech-details img {
+        width: 50%; /* 작은 화면에서는 이미지 크기 조정 */
+        margin-right: 0;
+        margin-bottom: 2%; /* 세로 배치 시 아래 여백 추가 */
+    }
+
+    .tech-details p {
+        margin-left: 0;
+        padding-left: 2%;
+        border-left: none; /* 작은 화면에서 테두리 제거 */
+    }
 }
 
 /* Team Section */
 .team {
-    padding: 20px;
+    padding: 2%;
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 0.1vw solid #ddd;
+    border-radius: 0.5vw;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 10%;
 }
 
 .team h3 {
-    font-size: 1rem;
+    font-size: 1vw;
     background-color: #666;
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1%;
+    border-radius: 10px;
     text-align: center;
-    margin: -20px -20px 20px -20px;
-    width: 108%;
-    height: 38px;
-    margin-bottom: 20px;
+    width: 100%;
+    margin: -2% 0 2% 0;
+    line-height: 1.5;
 }
 
-/* Team Member Cards */
+/* Team Member Container */
 .team-members-container {
     display: flex;
-    justify-content: space-around;
-    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
+    gap: 3%;
+    width: 100%;
+    padding-top: 1%;
+    margin-bottom: 5%;
 }
 
+/* Team Member Card */
 .team-member {
     perspective: 1000px;
-    width: 170px;
-    height: 270px;
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-radius: 15px;
-    padding: 10px;
+    width: 7vw;
+    width: 200px;
+    height: 350px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
+    margin-bottom: -5%;
 }
 
-.team-member .card {
-    width: 100%;
-    height: 100%;
+/* Card Flip Animation */
+.card {
     position: relative;
+    width: 100%;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    border: 0.2vw solid #000000;
+    border-radius: 1vw;
+    padding: 2%;
+    box-sizing: border-box;
+    min-height: 350px; /* 최소 높이 설정 */
+    height: 350px; /* 높이를 자동으로 조정 */
 }
 
-.team-member .card-front,
-.team-member .card-back {
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Card Front and Back */
+.card-front, .card-back {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 96%;
+    height: 50%;
     backface-visibility: hidden;
+    border-radius: 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 15px;
+    justify-content: start;
+    padding: 5%;
+    box-sizing: border-box;
 }
 
-.team-member .card-front {
+.card-front {
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.team-member .card-back {
-    display: block;
-    background-color: #f9f9f9;
+/* Card Back */
+.card-back {
+    background-color: #ffffff;
     transform: rotateY(180deg);
-    overflow-y: auto;
-    padding: 15px; /* 내용과 카드 테두리 사이 여백 */
-    font-size: 0.85rem; /* 글씨 크기 축소 */
-    max-height: 250px; /* 카드 뒷면 최대 높이 */
+    overflow-y: auto; /* 스크롤 가능하게 설정 */
+    height: 100%; /* 카드 전체 높이에 맞춤 */
+    max-height: 350px; /* 카드의 고정된 높이 설정 */
+    padding: 5%;
+    box-sizing: border-box;
 }
 
-.team-member.flipped .card {
-    transform: rotateY(180deg);
-}
-
+/* Image and Text Styling */
 .team-member img {
-    width: 120px;
-    height: 120px;
+    width: 80%;
+    height: auto;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 20%;
 }
 
 .team-member p {
-    margin: 0px 0;
-    font-size: 0.8rem;
+    margin: 0;
+    font-size: 0.8vw;
     color: #333;
 }
 
 .info-button {
-    background-color: #FFD700;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-top: 10px;
+    background-color: #fff786;
+    padding: 0vw 1vw;
+    font-size: 1vw;
+    margin-top: 20%;
+    border-radius: 0.5vw;
 }
 
-.info-button:hover {
-    background-color: #FFC107;
+/* Responsive Styling for Small Screens */
+@media (max-width: 768px) {
+    .team {
+        padding: 3%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .team h3 {
+        font-size: 4vw;
+        padding: 2%;
+        width: 100%;
+        margin: 0 0 5% 0;
+    }
+
+    .team-member {
+        width: 80vw;
+        margin-top: 0;
+    }
+
+    .team-member img {
+        width: 60%;
+    }
+
+    .team-member p {
+        font-size: 2.5vw;
+    }
+
+    .info-button {
+        padding: 2% 4%;
+        font-size: 1.8vw;
+    }
+
+    .card-back {
+        max-height: 250px; /* 작은 화면에서의 스크롤 영역 제한 */
+    }
 }
+
+/*===========================================================================이 위로는 반응형 웹 완료===========================================================================*/
+/*============================================================================이 아래로 작업해야 함=============================================================================*/
 
 /* Q&A Table Styling */
 .qna table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
 }
 
 .qna th {
     background-color: #f0f0f0;
     color: #333;
-    padding: 5px;
-    border: 1px solid #ccc;
+    padding: 0.5vw; /* 상대 단위로 패딩 조정 */
+    border: 0.1vw solid #ccc;
     text-align: center;
 }
 
 .qna td {
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 0.5vw; /* 상대 단위 패딩 */
+    border: 0.1vw solid #ccc;
     text-align: center;
-    font-size: 14px;
+    font-size: 0.8vw; /* 반응형 폰트 크기 */
 }
 
 .more-button {
     background-color: #ff7f50;
     color: white;
-    padding: 4px 16px;
-    border: 2px solid #333333;
-    border-radius: 5px;
+    padding: 0.5vw 2vw; /* 상대 단위로 패딩 조정 */
+    border: 0.2vw solid #333333;
+    border-radius: 1vw;
     cursor: pointer;
-    margin-top: 15px;
-    margin-bottom: -10px;
+    margin-left: 80%;
     float: right;
+    font-size: 0.8vw; /* 버튼 텍스트 크기 조정 */
+    width: 20%;
+    height: 10%;
+    text-align: center;
 }
 
 .more-button:hover {
     background-color: #ff4500;
 }
 
+/* 작은 화면에서 스타일 조정 */
+@media (max-width: 768px) {
+    .qna th, .qna td {
+        font-size: 3vw; /* 작은 화면에서 글씨 확대 */
+        padding: 1.5vw; /* 패딩도 확대 */
+    }
+    .more-button {
+        font-size: 2.5vw; /* 작은 화면에서 버튼 텍스트 크기 확대 */
+        padding: 1vw 3vw; /* 버튼 패딩도 확대 */
+    }
+}
+
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px 15px;
+    padding: 2% 3%; /* 상대 단위로 변경하여 유연한 패딩 */
     background-color: #333;
     color: #fff;
-    font-size: 14px;
+    font-size: 1vw; /* 화면 크기에 따라 조정되는 폰트 크기 */
 }
 
 footer nav a {
     color: #ddd;
-    margin: 0 10px;
+    margin: 0 1vw; /* 상대 단위로 변경하여 유연한 마진 */
     text-decoration: none;
 }
 
 footer nav a:hover {
     color: #fff;
+}
+
+/* 작은 화면용 미디어 쿼리 */
+@media (max-width: 768px) {
+    footer {
+        padding: 4% 5%; /* 작은 화면에서 패딩을 넉넉하게 조정 */
+        font-size: 3vw; /* 폰트 크기를 확대하여 가독성 유지 */
+    }
+    
+    footer nav a {
+        margin: 0 2vw; /* 작은 화면에서 링크 간격 확대 */
+        font-size: 3vw; /* 작은 화면에서 링크 폰트 크기 확대 */
+    }
 }

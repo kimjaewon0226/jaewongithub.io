@@ -74,8 +74,8 @@
 
     <!-- R&D 현황 Section -->
     <section id="status" class="rnd-status">
-        <h3>R&D 현황</h3>
         <div class="rnd-content">
+            <h3>R&D 현황</h3>
             <div class="text">
                 <p><strong>우리나라는 매년 GDP의 5%(2023년 약 30조)의 예산</strong>을 중소기업 및 창업, 소상공인들의 R&D(연구 개발)사업에 활용하고 있으며 이러한 R&D 예산을 전문적으로 취합, 분석하여 정보를 제공하고 관리할 수 있는 공공 및 민간업체의 부재로 인하여 <strong>정보의 ‘부익부 빈익빈’이 가속화</strong>되고 있습니다.</p>
                 <br>
@@ -310,6 +310,13 @@
                         <td>2024-10-19</td>
                         <td>대기중...</td>
                     </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>○○이 궁금해요</td>
+                        <td>홍길동</td>
+                        <td>2024-10-19</td>
+                        <td>대기중...</td>
+                    </tr>
                 </table>
                 <div class="more-button">
                     <a href="rd_q_and_a.html">더보기</a> <!-- 링크 추가 -->
@@ -328,34 +335,40 @@
 
     <!-- JavaScript를 여기에 추가 -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() { //관련 사이트 Section javascript
-            const rows = document.querySelectorAll(".data-row");
-            rows.forEach((row, index) => {
-                if (index < 10) { // 첫 10개 행 표시
-                    row.style.display = "table-row";
-                }
-            });
-        });
-
-        function flipCard(button) {  // 주요 참여인력 카드 뒤집기 Section javascript
-            const teamMember = button.closest('.team-member');
-            teamMember.classList.toggle('flipped'); // 플립 클래스 추가/제거
+        document.addEventListener("DOMContentLoaded", function() {
+    // 관련 사이트 Section: 첫 10개 행 표시
+    const rows = document.querySelectorAll(".data-row");
+    rows.forEach((row, index) => {
+        if (index < 10) { // 첫 10개 행 표시
+            row.style.display = "table-row";
         }
+    });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const cardBacks = document.querySelectorAll('.card-back');
-            
-            cardBacks.forEach(cardBack => {
-                const content = cardBack.getAttribute('data-content');
-                const textContainer = cardBack.querySelector('.text-content');
-                
-                for (let i = 0; i < content.length; i += 8) {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = content.slice(i, i + 8);
-                    textContainer.appendChild(paragraph);
-                }
-            });
+    // 주요 참여 인력 카드 뒤집기 Section
+    const flipButtons = document.querySelectorAll(".info-button");
+    flipButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const card = button.closest('.card');
+            card.classList.toggle('flipped'); // 플립 클래스 추가/제거
         });
+    });
+
+    // 카드 뒷면 텍스트 추가 Section
+    const cardBacks = document.querySelectorAll('.card-back');
+    cardBacks.forEach(cardBack => {
+        const content = cardBack.getAttribute('data-content');
+        const textContainer = cardBack.querySelector('.text-content');
+        
+        // 텍스트가 있을 경우에만 내용 추가
+        if (content && textContainer) {
+            for (let i = 0; i < content.length; i += 8) {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = content.slice(i, i + 8);
+                textContainer.appendChild(paragraph);
+            }
+        }
+    });
+});
     </script>
 </body>
 </html>
