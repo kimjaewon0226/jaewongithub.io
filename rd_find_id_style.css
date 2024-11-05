@@ -1,5 +1,5 @@
- /* 기본 스타일 초기화 */
- * {
+/* 기본 스타일 초기화 */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,7 +8,7 @@
 
 /* body에 배경 이미지 추가 */
 body {
-    background-image: url('picture/signup_background_image.jpg'); /* 배경 이미지 경로 */
+    background-image: url('picture/login_background_image.jpg'); /* 배경 이미지 경로 */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* 스크롤해도 배경 고정 */
@@ -115,37 +115,38 @@ h1 {
     opacity: 1;
 }
 
-/* 회원가입 섹션 스타일 */
-.signup-section {
-    flex: 1; /* footer를 하단에 고정하기 위해 flex-grow 설정 */
+/* 아이디 찾기 섹션 스타일 */
+.find_id-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 70vh;
 }
 
-.signup-container {
+.find_id-container {
     background-color: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
     padding: 40px;
     border-radius: 8px;
     text-align: center;
     width: 500px;
+    margin-top: 100px;
 }
 
-.signup-container h2 {
-    font-size: 60px;
+.find_id-container h2 {
+    font-size: 50px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.signup-container input {
-    width: 100%;
+.find_id-container input {
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-.signup-container button {
+.find_id-container button {
     width: 100%;
     padding: 10px;
     background-color: #ff9900;
@@ -157,11 +158,25 @@ h1 {
     margin-top: 20px;
 }
 
-.signup-container button:hover {
+.find_id-container button:hover {
     background-color: #cc7a00;
 }
 
-.login-link, .find-id-pw-link {
+.signup-link {
+    display: block;
+    margin-top: 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+/* 로그인 및 가입 링크 같은 라인에 표시 */
+.login-link,
+.signup-link {
     display: inline-block;
     margin: 0 5px; /* 링크 간 간격 설정 */
     color: #000;
@@ -170,7 +185,8 @@ h1 {
     margin-top: 4%;
 }
 
-.login-link:hover, .find-id-pw-link:hover {
+.login-link:hover,
+.signup-link:hover {
     text-decoration: underline;
 }
 

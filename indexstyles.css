@@ -1390,12 +1390,12 @@ footer nav a:hover {
 /* 데스크탑 화면용 스타일 */
 @media (min-width: 1200px) {
     footer {
-        padding: 2% 3%; /* 데스크탑 화면에 맞는 패딩 */
-        font-size: 1.5rem; /* 데스크탑 화면에 맞는 폰트 크기 */
+        padding: 1.3% 3%; /* 데스크탑 화면에 맞는 패딩 */
+        font-size: 1rem; /* 데스크탑 화면에 맞는 폰트 크기 */
     }
     
     footer nav a {
         margin: 0 1vw; /* 데스크탑 화면에서 링크 간격 조정 */
-        font-size: 1.5rem; /* 데스크탑 화면에 맞는 링크 폰트 크기 */
+        font-size: 1rem; /* 데스크탑 화면에 맞는 링크 폰트 크기 */
     }
 }
