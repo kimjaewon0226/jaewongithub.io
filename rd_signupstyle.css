@@ -8,7 +8,7 @@
 
 /* body에 배경 이미지 추가 */
 body {
-    background-image: url('picture/signup_background_image.jpg'); /* 배경 이미지 경로 */
+    background-image: url('picture/signup_background_image\ .jpg'); /* 배경 이미지 경로 */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* 스크롤해도 배경 고정 */
